@@ -8,10 +8,12 @@
 
 ### 准备
 安装依赖库  itchat、pyecharts、jieba、wordcloud 自行百度
+pyecharts 升级到 V1版本，与原来 V0.5X版本不兼容，安装 pyecharts 库需指定版本安装
+
+`pip install pyecharts==0.5.11`
 
 ### Run
-
-python Analysis.py
+`python Analysis.py`
 
 
 
