@@ -27,7 +27,7 @@ class Analysis:
             elif friend.Sex == 2:
                 girl += 1
             else:
-                other += 0
+                other += 1
 
         attr = ['男', '女']
         val = [boy, girl]
@@ -35,7 +35,7 @@ class Analysis:
         pie.add('', attr, val, is_label_show=True)
         file = 'tmp/sex.html';
         pie.render(file)
-        #print [boy, girl]
+        print "\n总好友数: %d 人, 男: %d 人, 女: %d 人, 未设置性别: %d 人" % (boy + girl + other, boy, girl, other)
         print "性别数据饼图生成：    %s/%s" % (self.getCurrentDir(), file)
     def area(self, isCity = True):
         """
@@ -122,7 +122,7 @@ class Analysis:
         w.generate(text=txt)
         file = 'tmp/signature.png'
         w.to_file(file)
-        print "签名数据云图生成：    %s/%s" % (self.getCurrentDir(), file)
+        print "\n签名数据云图生成：    %s/%s" % (self.getCurrentDir(), file)
 
     def run(self):
         self.signature()
