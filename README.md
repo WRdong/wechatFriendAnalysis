@@ -28,6 +28,7 @@ git clone https://github.com/WRdong/wechatFriendAnalysis.git wechatFriendAnalysi
 cd wechatFriendAnalysis
 python Analysis.py
 ```
+运行后会弹出一个二维码，需通过微信扫码
 
 ### 结果
 生成结果为 html 文件，在当前 tmp 目录下，用浏览器直接打开即可
