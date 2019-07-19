@@ -6,14 +6,37 @@
 - 城市
 - 通过好友的签名生成云词图
 
-### 准备
-安装依赖库  itchat、pyecharts、jieba、wordcloud 自行百度
-pyecharts 升级到 V1版本，与原来 V0.5X版本不兼容，安装 pyecharts 库需指定版本安装
+### 环境
+python2.7
 
-`pip install pyecharts==0.5.11`
+### 准备 
+- 安装依赖库 itchat、pyecharts、jieba、wordcloud 
+```
+pip install itchat
+pip install pyecharts==0.5.11
+pip install jieba
+pip install wordcloud
+```
 
-### Run
-`python Analysis.py`
+- 获取代码
+```
+git clone https://github.com/WRdong/wechatFriendAnalysis.git wechatFriendAnalysis
+```
+
+### RUN
+```
+cd wechatFriendAnalysis
+python Analysis.py
+```
+
+### 结果
+生成结果为 html 文件，在当前 tmp 目录下，用浏览器直接打开即可
+```
+./tmp/city.html
+./tmp/province.html
+./tmp/sex.html
+./tmp/signature.png
+```
 
 
 
