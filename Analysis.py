@@ -1,5 +1,6 @@
 #_*_coding:utf-8_*_
 
+import os
 import itchat
 from pyecharts import Pie
 from pyecharts import Bar
@@ -32,9 +33,10 @@ class Analysis:
         val = [boy, girl]
         pie = Pie('')
         pie.add('', attr, val, is_label_show=True)
-        pie.render('tmp/sex.html')
-        print [boy, girl]
-
+        file = 'tmp/sex.html';
+        pie.render(file)
+        #print [boy, girl]
+        print "性别数据饼图生成：    %s/%s" % (self.getCurrentDir(), file)
     def area(self, isCity = True):
         """
         城市或省份生成柱形图
@@ -71,7 +73,9 @@ class Analysis:
             )
 
             bar.add(**kwargs)
-            bar.render('tmp/city.html')
+
+            file = 'tmp/city.html';
+            bar.render(file)
         else:
             bar = Bar('省份(前 6)', '')
             kwargs = dict(
@@ -81,9 +85,10 @@ class Analysis:
             )
 
             bar.add(**kwargs)
-            bar.render('tmp/province.html')
-        print [x_axis, y_axis]
-
+            file = 'tmp/province.html'
+            bar.render(file)
+        #print [x_axis, y_axis]
+        print "%s数据柱形图生成：  %s/%s" % ( '城市' if isCity else '省份', self.getCurrentDir(), file)
 
     def signature(self):
         """
@@ -104,7 +109,7 @@ class Analysis:
 
             signatureList.append(signatureStr)
             info = [friend.NickName, friend.RemarkName, signatureStr]
-            print ", ".join(info)
+            #print ", ".join(info)
 
         txt = " ".join(signatureList)
         txt = ' '.join(jieba.cut(txt))
@@ -115,21 +120,25 @@ class Analysis:
             height=400
         )
         w.generate(text=txt)
-        w.to_file('tmp/signature.png')
-        return txt
+        file = 'tmp/signature.png'
+        w.to_file(file)
+        print "签名数据云图生成：    %s/%s" % (self.getCurrentDir(), file)
 
     def run(self):
+        self.signature()
         self.sex()
         self.area(isCity=False)
         self.area(isCity=True)
-        self.signature()
+
+    def getCurrentDir(self):
+        return os.path.dirname(os.path.abspath(__file__))
 
 if __name__ == "__main__":
-
     itchat.auto_login(hotReload=True)
     friends = itchat.get_friends()
     analysis = Analysis(friends)
     analysis.run()
+
 
 
 

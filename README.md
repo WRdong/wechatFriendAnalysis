@@ -16,6 +16,7 @@ pip install itchat
 pip install pyecharts==0.5.11
 pip install jieba
 pip install wordcloud
+pip install matplotlib
 ```
 
 - 获取代码
